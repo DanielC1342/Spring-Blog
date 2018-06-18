@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dice outcome</title>
+</head>
+<body>
+<h2>You guessed <span th:text="${guess}" />, The dice rolled <span th:text="${dice}" />.</h2>
+<div th:if="${isequal}"><h3>You Guessed Correctly!</h3></div>
+
+</body>
+</html>
