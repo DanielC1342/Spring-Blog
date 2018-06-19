@@ -11,23 +11,20 @@ import java.util.ArrayList;
 
 @Controller
 public class PostController {
+    private final PostService postsvc;
+
+    public PostController(PostService postsvc) {
+        this.postsvc = postsvc;
+    }
 
     @GetMapping("/posts")
     public String postIndex(Model model) {
-        Post postA = new Post("This is post A","Here is the body of post A");
-        Post postB = new Post("This is post B","Here is the body of post B");
-        Post postC = new Post("This is post C","Here is the body of post C");
-        ArrayList<Post> list = new ArrayList<>();
-        list.add(postA);
-        list.add(postB);
-        list.add(postC);
-        model.addAttribute("list",list);
+        model.addAttribute("list",postsvc.all());
         return "posts/index";
     }
     @GetMapping("/posts/{id}")
     public String postIndexId(@PathVariable int id, Model model) {
-        Post post = new Post("This is a Post","Here is the body of the post");
-        model.addAttribute("post",post);
+        model.addAttribute("post",postsvc.find(0));
         return "posts/show";
     }
     @GetMapping("/posts/create")
