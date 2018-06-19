@@ -10,10 +10,14 @@ public class PostService {
     private List<Post> list;
 
     public PostService() {
+        list = new ArrayList<>();
+        addPosts();
+    }
+
+    public void addPosts() {
         Post postA = new Post("Post A", "Here is the body of post A");
         Post postB = new Post("Post B", "Here is the body of post B");
         Post postC = new Post("Post C", "Here is the body of post C");
-        list = new ArrayList<>();
         list.add(postA);
         list.add(postB);
         list.add(postC);
