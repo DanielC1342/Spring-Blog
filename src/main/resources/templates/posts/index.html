@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: header(index)"/>
 <body>
+<nav th:replace="partials::navbar"></nav>
+
 <div th:each="post : ${list}">
     <h3 th:text="${post.title}" />
     <p th:text="${post.body}" />
