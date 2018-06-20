@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials::header(show)"/>
+<body>
+
+<nav th:replace="partials::navbar"/>
+<h1>Edit</h1>
+<form action="#">
+    Title:
+    <input type="text" name="nuTitle"  />
+    <br/>
+    Body:
+    <input type="text" name="nuBody"  />
+    <br/>
+    <input type="submit"/>
+</form>
+</body>
+</html>
