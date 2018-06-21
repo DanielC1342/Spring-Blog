@@ -26,7 +26,10 @@ public class PostController {
     }
     @GetMapping("/posts/{id}/edit")
     public String editPost(@PathVariable int id, Model model) {
-        model.addAttribute("post",postsvc.find(id));
+        Post edit = postsvc.find(id);
+        model.addAttribute("post", edit);
+        model.addAttribute("title",edit.getTitle());
+        model.addAttribute("body",edit.getBody());
         return "posts/edit";
     }
 
