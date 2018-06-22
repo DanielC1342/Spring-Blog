@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials::header(show)"/>
-<body>
+<body th:object="${post}">
 
 <nav th:replace="partials::navbar"/>
 <h1>Edit</h1>
-<form action="#" name="edit" th:object="${post}">
+<form th:action="@{/posts/{id}/edit(id=post.id)}" name="edit">
     Title:
     <input type="text" name="nuTitle" th:field="*{title}"/>
     <br/>
