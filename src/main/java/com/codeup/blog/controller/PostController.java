@@ -64,26 +64,10 @@ class PostController {
 
     @PostMapping("/posts/create")
     public String showCreatedPost(
-        @ModelAttribute Post post
+        Post post
     ) {
         postDao.save(post);
         return "redirect:/posts";
     }
 
-    @GetMapping("/posts/createUser")
-    public String createUser(Model model) {
-        model.addAttribute("nuUser",new User());
-        return "posts/createUser";
-    }
-
-    @PostMapping("/posts/createUser")
-    public String showCreatedUser(
-            @RequestParam(name = "username") String username,
-            @RequestParam(name = "password") String password,
-            @RequestParam(name = "email") String email
-    ) {
-        User newUser = new User(username,password,email);
-        userDao.save(newUser);
-        return "redirect:/posts";
-    }
 }
