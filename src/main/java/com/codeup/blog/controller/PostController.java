@@ -64,10 +64,8 @@ class PostController {
 
     @PostMapping("/posts/create")
     public String showCreatedPost(
-        @RequestParam(name = "title") String title,
-        @RequestParam(name = "body") String body
+        @ModelAttribute Post post
     ) {
-        Post post = new Post(title,body,user);
         postDao.save(post);
         return "redirect:/posts";
     }
