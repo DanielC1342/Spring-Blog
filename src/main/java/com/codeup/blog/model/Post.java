@@ -1,4 +1,4 @@
-package com.codeup.blog;
+package com.codeup.blog.model;
 
 import javax.persistence.*;
 
@@ -14,14 +14,26 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
+
     public Post() {
 
     }
 
-    public Post(int id, String title, String body) {
-        this.id = id;
+    public Post(String title, String body, User user) {
         this.title = title;
         this.body = body;
+        this.user = user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public int getId() {

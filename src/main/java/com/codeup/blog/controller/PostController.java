@@ -1,16 +1,20 @@
-package com.codeup.blog;
+package com.codeup.blog.controller;
 
+import com.codeup.blog.model.Post;
+import com.codeup.blog.repos.PostRepo;
+import com.codeup.blog.model.User;
+import com.codeup.blog.repos.UserRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 @Controller
 class PostController {
     private PostRepo postDao;
+    private UserRepo userDao;
+    private User user = new User("example","qwerty","email@email.email");
 
-    public PostController(PostService postsvc, PostRepo postDao) {
+    public PostController(PostRepo postDao) {
         this.postDao = postDao;
     }
 
@@ -63,8 +67,25 @@ class PostController {
         @RequestParam(name = "title") String title,
         @RequestParam(name = "body") String body
     ) {
-        Post post = new Post(0,title,body);
+        Post post = new Post(title,body,user);
         postDao.save(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/createUser")
+    public String createUser(Model model) {
+        model.addAttribute("nuUser",new User());
+        return "posts/createUser";
+    }
+
+    @PostMapping("/posts/createUser")
+    public String showCreatedUser(
+            @RequestParam(name = "username") String username,
+            @RequestParam(name = "password") String password,
+            @RequestParam(name = "email") String email
+    ) {
+        User newUser = new User(username,password,email);
+        userDao.save(newUser);
         return "redirect:/posts";
     }
 }

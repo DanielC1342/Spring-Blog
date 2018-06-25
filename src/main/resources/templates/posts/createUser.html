@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials::header(creatUser)"/>
+<body>
+
+<nav th:replace="partials::navbar"/>
+
+<form action="/posts/createUser" method="post" th:object="${nuUser}">
+    Username:
+    <input th:field="*{username}"/>
+    <br/>
+    Password:
+    <input th:field="*{password}"/>
+    <br/>
+    Email:
+    <input th:field="*{email}"/>
+    <br/>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>
