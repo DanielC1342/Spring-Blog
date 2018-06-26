@@ -24,12 +24,22 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/posts/create">Create new Post</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/sign-up">Register</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+
+            <ul>
+                <!-- More links here... -->
+                <li>
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                    </form>
+                </li>
+            </ul>
+    </div><!--/.nav-collapse -->
     </div>
 </nav>
+
 
 </body>
 </html>
