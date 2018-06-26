@@ -18,17 +18,17 @@ class PostController {
         this.postDao = postDao;
     }
 
-    @GetMapping("/posts")
+    @GetMapping("posts")
     public String postIndex(Model model) {
         model.addAttribute("list",postDao.findAll());
         return "posts/index";
     }
-    @GetMapping("/posts/{id}")
+    @GetMapping("posts/{id}")
     public String postIndexId(@PathVariable int id, Model model) {
         model.addAttribute("post",postDao.findOne(id));
         return "posts/show";
     }
-    @GetMapping("/posts/{id}/edit")
+    @GetMapping("posts/{id}/edit")
     public String editPost(@PathVariable int id, Model model) {
         Post edit = postDao.findOne(id);
         model.addAttribute("post", edit);
@@ -37,7 +37,7 @@ class PostController {
         return "posts/edit";
     }
 
-    @PostMapping("/posts/{id}/edit")
+    @PostMapping("posts/{id}/edit")
     public String updatePost(
             @PathVariable int id,
             @RequestParam(name = "nuTitle") String title,
@@ -48,7 +48,7 @@ class PostController {
         return "redirect:/posts";
     }
 
-    @PostMapping("/posts/{id}/delete")
+    @PostMapping("posts/{id}/delete")
     public String deletePost(@PathVariable int id) {
         Post foo = postDao.findOne(id);
         postDao.delete(foo);
@@ -56,13 +56,13 @@ class PostController {
     }
 
 
-    @GetMapping("/posts/create")
+    @GetMapping("posts/create")
     public String createPost(Model model) {
         model.addAttribute("post",new Post());
         return "posts/create";
     }
 
-    @PostMapping("/posts/create")
+    @PostMapping("posts/create")
     public String showCreatedPost(
         Post post
     ) {
